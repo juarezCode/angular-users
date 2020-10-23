@@ -12,6 +12,11 @@ import { ROOT_REDUCERS } from './store/reducers';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {
+  MatSnackBarConfig,
+  MatSnackBarModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,8 +39,18 @@ import { AppComponent } from './app.component';
       name: 'Users Store',
     }),
     EffectsModule.forRoot(ROOT_EFFECTS),
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 5000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      } as MatSnackBarConfig,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
