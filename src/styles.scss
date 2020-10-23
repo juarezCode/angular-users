@@ -1,1 +1,224 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// https://github.com/angular/components/blob/master/src/material/core/theming/_palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$primary-palette: (
+  50: #e0f2f1,
+  100: #b2dfdb,
+  200: #80cbc4,
+  300: #4db6ac,
+  400: #26a69a,
+  500: #009688,
+  600: #00897b,
+  700: #00796b,
+  800: #00695c,
+  900: #004d40,
+  A100: #a7ffeb,
+  A200: #64ffda,
+  A400: #1de9b6,
+  A700: #00bfa5,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$accent-palette: (
+  50: #e8eaf6,
+  100: #c5cae9,
+  200: #9fa8da,
+  300: #7986cb,
+  400: #5c6bc0,
+  500: #3f51b5,
+  600: #3949ab,
+  700: #303f9f,
+  800: #283593,
+  900: #1a237e,
+  A100: #8c9eff,
+  A200: #536dfe,
+  A400: #3d5afe,
+  A700: #304ffe,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$warn-palette: (
+  50: #feebeb,
+  100: #fecece,
+  200: #fdaeae,
+  300: #fc8d8d,
+  400: #fb7474,
+  500: #fa5c5c,
+  600: #f95454,
+  700: #f94a4a,
+  800: #f84141,
+  900: #f63030,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffd3d3,
+  A700: #ffb9b9,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$my-theme-primary: mat-palette($primary-palette);
+$primary-color: mat-color($my-theme-primary);
+$primary-contrast-color: mat-color($my-theme-primary, default-contrast);
+$link: $primary-color;
+$my-theme-accent: mat-palette($accent-palette);
+$accent-color: mat-color($my-theme-accent);
+$accent-contrast-color: mat-color($my-theme-accent, default-contrast);
+
+// The warn palette is optional (defaults to red).
+$my-theme-warn: mat-palette($warn-palette);
+$warn-color: mat-color($my-theme-warn);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$my-theme-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($my-theme-theme);
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+.mat-sidenav-container {
+  height: 100vh;
+}
+
+.is-flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.full-flex {
+  flex: 1;
+}
+
+.page-container {
+  margin-top: 36px;
+  margin-bottom: 36px;
+
+  & > *:not(router-outlet) {
+    flex: 1;
+  }
+}
+
+.table-container {
+  position: relative;
+  height: 500px;
+  overflow: auto;
+
+  & > table {
+    table-layout: fixed;
+    width: 100%;
+
+    &.hover tr.mat-row:hover:not(.active) {
+      background: whitesmoke;
+    }
+
+    & tr.mat-row.active {
+      background-color: mat-color($my-theme-accent, 100);
+      & td.mat-cell {
+        color: mat-color($my-theme-accent, '100-contrast');
+      }
+    }
+
+    &.action tr.mat-row:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+.text-warn {
+  color: $warn-color;
+}
