@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CreateUserModule } from './pages/create-user/create-user.module';
+import { CreateUserPage } from './pages/create-user/create-user.page';
 import { LoginModule } from './pages/login/login.module';
 import { LoginPage } from './pages/login/login.page';
 import { UserListModule } from './pages/user-list/user-list.module';
@@ -18,13 +20,22 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    component: UserListPage,
-    children: [],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: UserListPage,
+      },
+      {
+        path: 'create-user',
+        component: CreateUserPage,
+      },
+    ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), LoginModule, UserListModule],
+  imports: [RouterModule.forRoot(routes), LoginModule, UserListModule, CreateUserModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

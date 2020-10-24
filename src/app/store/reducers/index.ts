@@ -11,6 +11,6 @@ export interface AppState {
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState>>('Root reducers token', {
   factory: () => ({
     router: fromRouter.routerReducer,
-    users: fromUser.reducers,
+    user: fromUser.reducers,
   }),
 });
