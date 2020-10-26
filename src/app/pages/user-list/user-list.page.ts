@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getUsers } from 'src/app/store/actions/user/user.actions';
+import { getUsers } from 'src/app/store/actions/user/users.actions';
 import { UserListFacade } from './user-list.facade';
 
 @Component({

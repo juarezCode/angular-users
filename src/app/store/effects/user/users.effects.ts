@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserAPI } from 'src/app/api/user.api';
-import { getUsersError, getUsers, getUsersSuccess } from '../../actions/user/user.actions';
+import { getUsersError, getUsers, getUsersSuccess } from '../../actions/user/users.actions';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,11 +14,7 @@ export class UserEffects {
       switchMap(() => {
         return this.userAPI.getUsers().pipe(
           map((payload) => getUsersSuccess({ payload })),
-          catchError((error) => {
-            console.log(error);
-
-            return of(getUsersError({ error: error.error }));
-          }),
+          catchError((error) => of(getUsersError({ error: error.error }))),
         );
       }),
     ),

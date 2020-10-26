@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { getUsers } from 'src/app/store/actions/user/user.actions';
+import { getUsers } from 'src/app/store/actions/user/users.actions';
 import {
   selectErrorUsers,
   selectLoadingUsers,
   selectLoadUsers,
   selectUsers,
-} from 'src/app/store/selectors/user/user.selectors';
+} from 'src/app/store/selectors/user/users.selectors';
 
 @Injectable({
   providedIn: 'root',

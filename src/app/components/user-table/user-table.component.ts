@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/types/user';
 
 @Component({
@@ -18,7 +19,13 @@ export class UserTableComponent {
 
   columnas: string[] = ['No', 'name', 'username', 'email'];
 
+  constructor(private router: Router) {}
+
   selectUser(id: string) {
     console.log(`user ${id}`);
+  }
+
+  createUser() {
+    this.router.navigate(['/app/create-user']);
   }
 }

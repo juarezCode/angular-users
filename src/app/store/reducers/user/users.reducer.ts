@@ -1,7 +1,7 @@
 import { Action, createReducer } from '@ngrx/store';
 import { mutableOn } from 'ngrx-etc';
 import { User } from 'src/app/types/user';
-import { getUsersError, getUsers, getUsersSuccess } from '../../actions/user/user.actions';
+import { getUsersError, getUsers, getUsersSuccess } from '../../actions/user/users.actions';
 
 export type State = {
   cargado: boolean;

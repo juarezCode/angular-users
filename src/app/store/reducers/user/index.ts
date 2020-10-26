@@ -1,5 +1,5 @@
 import { combineReducers } from '@ngrx/store';
-import * as fromUser from './user.reducer';
+import * as fromUser from './users.reducer';
 import * as fromCreateUser from './create-user.reducer';
 
 export const key = 'user';
