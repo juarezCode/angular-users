@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
@@ -29,11 +30,39 @@ export class CreateUserEffects {
       this.actions$.pipe(
         ofType(createUserSuccess),
         tap(() => {
+          this.snackbar.open('Se ha creado el usuario exitosamente', null, {
+            panelClass: 'primary',
+          });
           this.router.navigate(['/app']);
         }),
       ),
     { dispatch: false },
   );
 
-  constructor(private actions$: Actions, private userAPI: UserAPI, private router: Router) {}
+  createUserError$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(createUserError),
+        tap(() =>
+          this.snackbar.open('Algo salió mal, vuelva a intentarlo', null, {
+            panelClass: 'warn',
+          }),
+        ),
+        tap(({ error: { status } }) => {
+          if (status === 'DUPLICATED') {
+            this.snackbar.open('El email ya ha sido registrado', null, {
+              panelClass: 'warn',
+            });
+          }
+        }),
+      ),
+    { dispatch: false },
+  );
+
+  constructor(
+    private actions$: Actions,
+    private userAPI: UserAPI,
+    private router: Router,
+    private snackbar: MatSnackBar,
+  ) {}
 }

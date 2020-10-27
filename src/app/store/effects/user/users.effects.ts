@@ -24,18 +24,11 @@ export class UsersEffects {
     () =>
       this.actions$.pipe(
         ofType(getUsersError),
-        tap(({ error: { message } }) => {
-          console.log('message', message);
-        }),
-        tap(({ error: { message } }) =>
+        tap(() =>
           this.snackbar.open('Algo salió mal, vuelva a intentarlo', null, {
-            panelClass: 'primary',
+            panelClass: 'warn',
           }),
         ),
-        tap(({ error: { message } }) => {
-          // if (message === 'MensajeSalida.USUARIO_BLOQUEADO')
-          //   this.router.navigate(['/autenticacion/verificar-pregunta-secreta']);
-        }),
       ),
     { dispatch: false },
   );

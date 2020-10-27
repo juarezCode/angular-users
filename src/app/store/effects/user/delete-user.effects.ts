@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
@@ -29,11 +30,32 @@ export class DeleteUserEffects {
       this.actions$.pipe(
         ofType(deleteUserSuccess),
         tap(() => {
+          this.snackbar.open('Se ha eliminado el usuario exitosamente', null, {
+            panelClass: 'primary',
+          });
           this.router.navigate(['/app']);
         }),
       ),
     { dispatch: false },
   );
 
-  constructor(private actions$: Actions, private userAPI: UserAPI, private router: Router) {}
+  deleteUserError$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(deleteUserError),
+        tap(() =>
+          this.snackbar.open('Algo salió mal, vuelva a intentarlo', null, {
+            panelClass: 'warn',
+          }),
+        ),
+      ),
+    { dispatch: false },
+  );
+
+  constructor(
+    private actions$: Actions,
+    private userAPI: UserAPI,
+    private router: Router,
+    private snackbar: MatSnackBar,
+  ) {}
 }

@@ -33,7 +33,7 @@ $primary-palette: (
     100: #000000,
     200: #000000,
     300: #000000,
-    400: #000000,
+    400: #ffffff,
     500: #ffffff,
     600: #ffffff,
     700: #ffffff,
@@ -132,7 +132,12 @@ $my-theme-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-
 // that you are using.
 @include angular-material-theme($my-theme-theme);
 
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities';
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -174,27 +179,27 @@ a:-webkit-any-link {
 
 .table-container {
   position: relative;
-  height: 500px;
   overflow: auto;
+  height: 500px;
+}
 
-  & > table {
-    table-layout: fixed;
-    width: 100%;
+table {
+  table-layout: fixed;
+  width: 100%;
 
-    &.hover tr.mat-row:hover:not(.active) {
-      background: whitesmoke;
+  &.hover tr.mat-row:hover:not(.active) {
+    background: whitesmoke;
+  }
+
+  & tr.mat-row.active {
+    background-color: mat-color($my-theme-accent, 600);
+    & td.mat-cell {
+      color: mat-color($my-theme-accent, '700-contrast');
     }
+  }
 
-    & tr.mat-row.active {
-      background-color: mat-color($my-theme-accent, 100);
-      & td.mat-cell {
-        color: mat-color($my-theme-accent, '100-contrast');
-      }
-    }
-
-    &.action tr.mat-row:hover {
-      cursor: pointer;
-    }
+  &.action tr.mat-row:hover {
+    cursor: pointer;
   }
 }
 
@@ -221,4 +226,99 @@ a:-webkit-any-link {
 
 .text-warn {
   color: $warn-color;
+}
+
+.match-input-height {
+  height: 53px;
+}
+
+.min-h-100 {
+  min-height: 100% !important;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.mat-dialog-container,
+.progress-bar-container {
+  position: relative;
+
+  & mat-progress-bar {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.mat-snack-bar-container {
+  &.primary {
+    color: mat-color($my-theme-primary, '500-contrast');
+    background-color: mat-color($my-theme-primary, 500);
+  }
+  &.accent {
+    color: mat-color($my-theme-accent, '500-contrast');
+    background-color: mat-color($my-theme-accent, 500);
+  }
+  &.warn {
+    color: mat-color($my-theme-warn, '900-contrast');
+    background-color: mat-color($my-theme-warn, 600);
+  }
+}
+
+.flex-even {
+  flex: 1;
+}
+
+// a.navbar-link {
+//   $svg-selector: 'svg g, svg g use';
+//   $icon-selector: 'mat-icon.mat-light';
+
+//   #{$icon-selector} {
+//     $size: 18px;
+//     width: $size;
+//     height: $size;
+
+//     svg {
+//       transform: translateY(-25%);
+//     }
+
+//     #{$svg-selector} {
+//       fill: color.scale($primary-contrast-color, $lightness: -30%);
+//     }
+//   }
+
+//   &:hover #{$icon-selector} {
+//     #{$svg-selector} {
+//       fill: $primary-contrast-color;
+//     }
+//   }
+
+//   &.active #{$icon-selector} {
+//     #{$svg-selector} {
+//       color: $primary-contrast-color;
+//       fill: $primary-contrast-color;
+//       border-bottom-color: $accent-color;
+//     }
+//   }
+// }
+
+$icon-large-size: 48px;
+
+mat-icon.large {
+  width: $icon-large-size;
+  height: $icon-large-size;
+  font-size: $icon-large-size;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.ie-menu-icon-text-fit {
+  width: 160px;
 }
