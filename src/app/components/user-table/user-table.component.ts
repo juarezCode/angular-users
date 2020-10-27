@@ -17,7 +17,7 @@ export class UserTableComponent {
 
   @Input() error: any;
 
-  columnas: string[] = ['No', 'name', 'username', 'email'];
+  columnas: string[] = ['No', 'name', 'email', 'actions'];
 
   constructor(private router: Router) {}
 
@@ -27,5 +27,9 @@ export class UserTableComponent {
 
   createUser() {
     this.router.navigate(['/app/create-user']);
+  }
+
+  navigateToDelete(id: number) {
+    this.router.navigate([`/app/delete-user/${id}`]);
   }
 }

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateUserModule } from './pages/create-user/create-user.module';
 import { CreateUserPage } from './pages/create-user/create-user.page';
+import { DeleteUserModule } from './pages/delete-user/delete-user.module';
+import { DeleteUserPage } from './pages/delete-user/delete-user.page';
 import { LoginModule } from './pages/login/login.module';
 import { LoginPage } from './pages/login/login.page';
 import { UserListModule } from './pages/user-list/user-list.module';
@@ -30,12 +32,22 @@ const routes: Routes = [
         path: 'create-user',
         component: CreateUserPage,
       },
+      {
+        path: 'delete-user/:userId',
+        component: DeleteUserPage,
+      },
     ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), LoginModule, UserListModule, CreateUserModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    LoginModule,
+    UserListModule,
+    CreateUserModule,
+    DeleteUserModule,
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

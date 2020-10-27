@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NewUser, User, Users } from '../types/user';
+import { NewUser, User, UserResponse, Users } from '../types/user';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -21,6 +21,14 @@ export class UserAPI {
         headers: { token: this.myToken },
       })
       .pipe(map((response) => response.data.users));
+  }
+
+  getUser(userId: number): Observable<User> {
+    return this.http
+      .get<UserResponse>(`${this.url}/users/get-user-by-id/${userId}`, {
+        headers: { token: this.myToken },
+      })
+      .pipe(map((response) => response.data));
   }
 
   createUser(payload: NewUser): Observable<void> {

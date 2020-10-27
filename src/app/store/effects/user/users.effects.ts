@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
-export class UserEffects {
+export class UsersEffects {
   getUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getUsers),

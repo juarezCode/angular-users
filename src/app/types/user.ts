@@ -17,3 +17,8 @@ export type Users = {
     users: User[];
   };
 };
+
+export type UserResponse = {
+  status: string;
+  data: User;
+};
