@@ -38,4 +38,12 @@ export class UserAPI {
       })
       .pipe(map(() => null));
   }
+
+  deleteUser(userId: number): Observable<void> {
+    return this.http
+      .delete(`${this.url}/users/delete/${userId}`, {
+        headers: { token: this.myToken },
+      })
+      .pipe(map(() => null));
+  }
 }

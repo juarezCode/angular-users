@@ -9,9 +9,15 @@ import { DeleteUserFacade } from './delete-user.facade';
 export class DeleteUserPage {
   user$ = this.deleteUserFacade.user$;
 
+  deleting$ = this.deleteUserFacade.deleting$;
+
   constructor(private deleteUserFacade: DeleteUserFacade) {}
 
   getUser(userId: number) {
     this.deleteUserFacade.getUser(userId);
+  }
+
+  deleteUser(userId: number) {
+    this.deleteUserFacade.deleteUser(userId);
   }
 }

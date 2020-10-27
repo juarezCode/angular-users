@@ -1,10 +1,8 @@
 <div class="col-12">
-  <h2>Name: {{ user.name }}</h2>
-  <h2>Email: {{ user.email }}</h2>
+  <h2>Name: {{ user?.name }}</h2>
+  <h2>Email: {{ user?.email }}</h2>
   <div class="row justify-content-end">
-    <button class="col-auto" style="margin-right: 10px" type="button" mat-button (click)="back()">
-      Cancelar
-    </button>
-    <button class="col-auto" color="accent" type="submit" mat-flat-button>Eliminar</button>
+    <button class="col-auto" type="button" mat-button (click)="back()">Cancelar</button>
+    <button class="col-auto" color="accent" mat-flat-button (click)="deleteUser()">Eliminar</button>
   </div>
 </div>

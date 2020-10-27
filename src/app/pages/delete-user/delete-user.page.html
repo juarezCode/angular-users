@@ -1,9 +1,11 @@
 <p>delete-user page works!</p>
 <mat-card class="w-50 progress-bar-container">
+  <mat-progress-bar *ngIf="deleting$ | async" mode="indeterminate"></mat-progress-bar>
   <h2 class="mat-title">Eliminar Usuario</h2>
   <mat-card-content>
     <delete-user-component
       (getUser)="getUser($event)"
+      (deleteUser)="deleteUser($event)"
       [user]="user$ | async"
     ></delete-user-component>
   </mat-card-content>

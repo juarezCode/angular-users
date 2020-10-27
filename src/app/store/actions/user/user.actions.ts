@@ -1,12 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { Action } from 'rxjs/internal/scheduler/Action';
 import { User } from 'src/app/types/user';
 
-export const getUser = createAction('[User] Buscar Usuario', props<{ userId: number }>());
+export const getUser = createAction('[User] Get User', props<{ userId: number }>());
 
-export const getUserSuccess = createAction(
-  '[User] Buscar Usuario Exito',
-  props<{ payload: User }>(),
-);
+export const getUserSuccess = createAction('[User] Get User Success', props<{ payload: User }>());
 
-export const getUserError = createAction('[User] Buscar Usuario Error', props<{ error: any }>());
+export const getUserError = createAction('[User] Get User Error', props<{ error: any }>());
