@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { User, UserUpdate } from 'src/app/types/user';
 import { emailValidator, whitespaceValidator } from 'src/app/util/string-validators';
 
 @Component({
@@ -10,19 +11,15 @@ import { emailValidator, whitespaceValidator } from 'src/app/util/string-validat
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UpdateUserForm {
-  @Output() update = new EventEmitter();
+  @Input() user: User;
+
+  @Output() update: EventEmitter<UserUpdate> = new EventEmitter();
 
   form: FormGroup;
 
   showFieldPassword = true;
 
-  userId: number;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required, Validators.maxLength(80), whitespaceValidator]],
       email: [
@@ -30,12 +27,11 @@ export class UpdateUserForm {
         [Validators.required, Validators.maxLength(80), whitespaceValidator, emailValidator],
       ],
     });
-    this.userId = +this.route.snapshot.paramMap.get('userId');
   }
 
   onSubmit() {
     if (this.form.invalid) return;
-    this.update.emit({ user: this.form.value, userId: this.userId });
+    this.update.emit(this.form.value);
   }
 
   showPassword() {

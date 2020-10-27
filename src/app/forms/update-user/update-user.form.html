@@ -2,7 +2,13 @@
   <div class="row">
     <mat-form-field class="col-12">
       <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name" matInput [placeholder]="'Nombre'" type="text" />
+      <input
+        [value]="user?.name"
+        matInput
+        formControlName="name"
+        [placeholder]="'Nombre'"
+        type="text"
+      />
       <mat-error>
         <span *ngIf="form.hasError('required', 'name') || form.hasError('whitespace', 'name')">
           Este campo es requerido.
@@ -14,7 +20,13 @@
     </mat-form-field>
     <mat-form-field class="col-12">
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email" matInput [placeholder]="'Email'" type="text" />
+      <input
+        [value]="user?.email"
+        matInput
+        formControlName="email"
+        [placeholder]="'Email'"
+        type="text"
+      />
       <mat-error>
         <span *ngIf="form.hasError('required', 'email') || form.hasError('whitespace', 'email')">
           Este campo es requerido.

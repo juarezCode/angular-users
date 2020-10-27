@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserUpdate } from 'src/app/types/user';
 import { UpdateUserFacade } from './update-user.facade';
 
@@ -8,13 +9,25 @@ import { UpdateUserFacade } from './update-user.facade';
   styleUrls: ['./update-user.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UpdateUserPage {
+export class UpdateUserPage implements OnInit {
   updating$ = this.updateUserFacade.updating$;
 
-  constructor(private updateUserFacade: UpdateUserFacade) {}
+  user$ = this.updateUserFacade.user$;
 
-  updateUser(userUpdate: { user: UserUpdate; userId: number }) {
-    const { user, userId } = userUpdate;
-    this.updateUserFacade.updateUser(user, userId);
+  id: number;
+
+  constructor(private updateUserFacade: UpdateUserFacade, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.id = +this.route.snapshot.paramMap.get('userId');
+    this.getUser(this.id);
+  }
+
+  updateUser(user: UserUpdate) {
+    this.updateUserFacade.updateUser(user, this.id);
+  }
+
+  getUser(userId: number) {
+    this.updateUserFacade.getUser(userId);
   }
 }
