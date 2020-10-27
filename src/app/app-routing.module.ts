@@ -6,6 +6,8 @@ import { DeleteUserModule } from './pages/delete-user/delete-user.module';
 import { DeleteUserPage } from './pages/delete-user/delete-user.page';
 import { LoginModule } from './pages/login/login.module';
 import { LoginPage } from './pages/login/login.page';
+import { UpdateUserModule } from './pages/update-user/update-user.module';
+import { UpdateUserPage } from './pages/update-user/update-user.page';
 import { UserListModule } from './pages/user-list/user-list.module';
 import { UserListPage } from './pages/user-list/user-list.page';
 
@@ -36,8 +38,13 @@ const routes: Routes = [
         path: 'delete-user/:userId',
         component: DeleteUserPage,
       },
+      {
+        path: 'update-user/:userId',
+        component: UpdateUserPage,
+      },
     ],
   },
+  { path: '**', redirectTo: 'app', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -47,6 +54,7 @@ const routes: Routes = [
     UserListModule,
     CreateUserModule,
     DeleteUserModule,
+    UpdateUserModule,
   ],
   exports: [RouterModule],
 })

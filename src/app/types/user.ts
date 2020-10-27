@@ -11,6 +11,11 @@ export type NewUser = {
   password: string;
 };
 
+export type UserUpdate = {
+  name: string;
+  email: string;
+};
+
 export type Users = {
   data: {
     total: number;

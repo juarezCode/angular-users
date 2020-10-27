@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NewUser, User, UserResponse, Users } from '../types/user';
+import { NewUser, User, UserResponse, Users, UserUpdate } from '../types/user';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -42,6 +42,14 @@ export class UserAPI {
   deleteUser(userId: number): Observable<void> {
     return this.http
       .delete(`${this.url}/users/delete/${userId}`, {
+        headers: { token: this.myToken },
+      })
+      .pipe(map(() => null));
+  }
+
+  updateUser(userId: number, payload: UserUpdate): Observable<void> {
+    return this.http
+      .put(`${this.url}/users/update/${userId}`, payload, {
         headers: { token: this.myToken },
       })
       .pipe(map(() => null));

@@ -1,0 +1,8 @@
+<p>update-user page works!</p>
+<mat-card class="w-50 progress-bar-container">
+  <mat-progress-bar *ngIf="updating$ | async" mode="indeterminate"></mat-progress-bar>
+  <h2 class="mat-title">Actualizar Usuario</h2>
+  <mat-card-content>
+    <update-user-form (update)="updateUser($event)"></update-user-form>
+  </mat-card-content>
+</mat-card>

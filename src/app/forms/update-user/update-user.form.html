@@ -27,25 +27,6 @@
         </span>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col-12">
-      <mat-label>Contraseña</mat-label>
-      <input
-        name="password"
-        [type]="showFieldPassword ? 'password' : 'text'"
-        formControlName="password"
-        matInput
-        [placeholder]="'Contraseña'"
-      />
-      <mat-icon matSuffix (click)="showPassword()">
-        {{showFieldPassword ? 'visibility' : 'visibility_off'}}
-      </mat-icon>
-      <mat-error>
-        <span *ngIf="form.hasError('required', 'password')"> Este campo es requerido. </span>
-        <span *ngIf="form.hasError('maxlength', 'password')">
-          No puede tener mas de 30 caracteres.
-        </span>
-      </mat-error>
-    </mat-form-field>
     <div class="col-12">
       <div class="row justify-content-end">
         <button
@@ -64,7 +45,7 @@
           type="submit"
           mat-flat-button
         >
-          Crear
+          Actualizar
         </button>
       </div>
     </div>

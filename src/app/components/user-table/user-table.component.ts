@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/types/user';
 
@@ -31,5 +31,9 @@ export class UserTableComponent {
 
   navigateToDelete(id: number) {
     this.router.navigate([`/app/delete-user/${id}`]);
+  }
+
+  navigateToUpdate(id: number) {
+    this.router.navigate([`/app/update-user/${id}`]);
   }
 }

@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/types/user';
 
 @Component({
@@ -22,7 +22,7 @@ export class DeleteUserComponent implements OnInit {
 
   @Input() user: User;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   private userId: number;
 
@@ -35,5 +35,7 @@ export class DeleteUserComponent implements OnInit {
     this._deleteUser.emit(this.userId);
   }
 
-  back() {}
+  back() {
+    this.router.navigate(['/app']);
+  }
 }
