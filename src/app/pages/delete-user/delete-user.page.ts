@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DeleteUserFacade } from './delete-user.facade';
 
 @Component({
   selector: 'app-delete-user',
   templateUrl: './delete-user.page.html',
   styleUrls: ['./delete-user.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteUserPage {
   user$ = this.deleteUserFacade.user$;

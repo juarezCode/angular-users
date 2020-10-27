@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LayoutComponent } from './layouts/layout/layout.component';
+import { LayoutModule } from './layouts/layout/layout.module';
 import { CreateUserModule } from './pages/create-user/create-user.module';
 import { CreateUserPage } from './pages/create-user/create-user.page';
 import { DeleteUserModule } from './pages/delete-user/delete-user.module';
@@ -24,6 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'app',
+    component: LayoutComponent,
     children: [
       {
         path: '',
@@ -55,6 +58,7 @@ const routes: Routes = [
     CreateUserModule,
     DeleteUserModule,
     UpdateUserModule,
+    LayoutModule,
   ],
   exports: [RouterModule],
 })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NewUser } from 'src/app/types/user';
 import { CreateUserFacade } from './create-user.facade';
 
@@ -6,6 +6,7 @@ import { CreateUserFacade } from './create-user.facade';
   selector: 'app-create-user',
   templateUrl: './create-user.page.html',
   styleUrls: ['./create-user.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateUserPage {
   creatingUser$ = this.createUserFacade.creatingUser$;
