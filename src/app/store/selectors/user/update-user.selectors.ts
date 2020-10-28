@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { selectUser } from './feature';
 
-const selectUpdateUser = createSelector(selectUser, (state) => state.updateUser);
+const selectUpdateUserReducer = createSelector(selectUser, (state) => state.updateUser);
 
-export const selectUpdatingUser = createSelector(selectUpdateUser, (state) => state.loading);
+export const selectUpdatingUser = createSelector(selectUpdateUserReducer, (state) => state.loading);

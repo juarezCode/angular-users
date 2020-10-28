@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SessionGuard } from './guards/session.guard';
 import { AuthenticationLayout } from './layouts/authentication/authentication.layout';
 import { AuthenticationLayoutModule } from './layouts/authentication/authentication.module';
 import { LayoutComponent } from './layouts/layout/layout.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
   {
     path: 'app',
     component: LayoutComponent,
+    canActivate: [SessionGuard],
     children: [
       {
         path: '',
@@ -55,7 +57,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'app', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
