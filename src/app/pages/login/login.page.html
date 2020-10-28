@@ -1,5 +1,5 @@
 <mat-card class="w-50 progress-bar-container">
-  <!-- <mat-progress-bar *ngIf="creatingUser$ | async" mode="indeterminate"></mat-progress-bar> -->
+  <mat-progress-bar *ngIf="logging$ | async" mode="indeterminate"></mat-progress-bar>
   <h2 class="mat-title">Login</h2>
   <mat-card-content>
     <login-form (login)="login($event)"></login-form>

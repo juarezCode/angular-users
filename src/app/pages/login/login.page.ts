@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UserLogin } from 'src/app/types/user';
-import { LoginFacade } from './login.facade';
+import { LoginFacade } from '../../store/facades/auth/login.facade';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +9,8 @@ import { LoginFacade } from './login.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPage {
+  logging$ = this.loginFacade.logging$;
+
   constructor(private loginFacade: LoginFacade) {}
 
   login(user: UserLogin) {
