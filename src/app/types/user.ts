@@ -23,7 +23,19 @@ export type Users = {
   };
 };
 
+export type UserLogin = {
+  name: string;
+  email: string;
+};
+
 export type UserResponse = {
   status: string;
   data: User;
+};
+
+export type LoginResponse = {
+  status: string;
+  data: {
+    token: string;
+  };
 };

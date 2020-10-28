@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { UserLogin } from 'src/app/types/user';
+import { LoginFacade } from './login.facade';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginPage implements OnInit {
-  constructor() {}
+export class LoginPage {
+  constructor(private loginFacade: LoginFacade) {}
 
-  ngOnInit(): void {}
+  login(user: UserLogin) {
+    this.loginFacade.login(user);
+  }
 }

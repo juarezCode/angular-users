@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationLayout } from './layouts/authentication/authentication.layout';
+import { AuthenticationLayoutModule } from './layouts/authentication/authentication.module';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { LayoutModule } from './layouts/layout/layout.module';
 import { CreateUserModule } from './pages/create-user/create-user.module';
@@ -17,12 +19,18 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'app',
+    redirectTo: 'login',
   },
   {
     path: 'login',
-    component: LoginPage,
-    children: [],
+    component: AuthenticationLayout,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: LoginPage,
+      },
+    ],
   },
   {
     path: 'app',
@@ -59,6 +67,7 @@ const routes: Routes = [
     DeleteUserModule,
     UpdateUserModule,
     LayoutModule,
+    AuthenticationLayoutModule,
   ],
   exports: [RouterModule],
 })
