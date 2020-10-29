@@ -2,6 +2,6 @@
   <mat-progress-bar *ngIf="logging$ | async" mode="indeterminate"></mat-progress-bar>
   <h2 class="mat-title">Login</h2>
   <mat-card-content>
-    <login-form (login)="login($event)"></login-form>
+    <login-form (login)="login($event)" [logging]="logging$ | async"></login-form>
   </mat-card-content>
 </mat-card>

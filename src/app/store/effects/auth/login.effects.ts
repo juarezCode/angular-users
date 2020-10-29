@@ -14,15 +14,27 @@ export class LoginEffects {
     this.actions$.pipe(
       ofType(login),
       switchMap(({ payload }) => {
+        console.log('authAPI');
+
         return this.authAPI
           .login(payload)
           .pipe(map((payload) => ({ token: payload.token, userId: payload.userId })));
       }),
       switchMap(({ token, userId }) => {
+        console.log('userAPI');
+
         return this.userAPI.getUser(userId).pipe(map((userData) => ({ token, userData })));
       }),
-      map((response) => loginSuccess(response)),
-      catchError((error) => of(loginError({ error: error.error }))),
+      map((response) => {
+        console.log('success', response);
+
+        return loginSuccess(response);
+      }),
+      catchError((error) => {
+        console.log('error', error);
+
+        return of(loginError({ error: error.error }));
+      }),
     ),
   );
 

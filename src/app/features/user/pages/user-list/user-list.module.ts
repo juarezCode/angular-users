@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { UserListPage } from './user-list.page';
 import { MatButtonModule } from '@angular/material/button';
-import { UserTableComponentModule } from 'src/app/components/user-table/user-table.module';
+import { UserTableComponentModule } from 'src/app/features/user/components/user-table/user-table.module';
 
 @NgModule({
   declarations: [UserListPage],

@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { LoginFacade } from 'src/app/store/facades/auth/login.facade';
 import { UserLogin } from 'src/app/types/user';
-import { LoginFacade } from '../../store/facades/auth/login.facade';
 
 @Component({
   selector: 'app-login',

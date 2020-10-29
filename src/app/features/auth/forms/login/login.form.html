@@ -38,7 +38,7 @@
       <div class="row justify-content-end">
         <button
           class="col-auto"
-          [disabled]="(ngForm.submitted && form.invalid)"
+          [disabled]="(ngForm.submitted && form.invalid) || logging"
           color="accent"
           type="submit"
           mat-flat-button

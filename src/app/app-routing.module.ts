@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SessionGuard } from './guards/session.guard';
+import { SessionGuard } from './features/auth/guards/session.guard';
 import { AuthenticationLayout } from './layouts/authentication/authentication.layout';
 import { AuthenticationLayoutModule } from './layouts/authentication/authentication.module';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { LayoutModule } from './layouts/layout/layout.module';
-import { CreateUserModule } from './pages/create-user/create-user.module';
-import { CreateUserPage } from './pages/create-user/create-user.page';
-import { DeleteUserModule } from './pages/delete-user/delete-user.module';
-import { DeleteUserPage } from './pages/delete-user/delete-user.page';
-import { LoginModule } from './pages/login/login.module';
-import { LoginPage } from './pages/login/login.page';
-import { UpdateUserModule } from './pages/update-user/update-user.module';
-import { UpdateUserPage } from './pages/update-user/update-user.page';
-import { UserListModule } from './pages/user-list/user-list.module';
-import { UserListPage } from './pages/user-list/user-list.page';
+import { CreateUserModule } from './features/user/pages/create-user/create-user.module';
+import { CreateUserPage } from './features/user/pages/create-user/create-user.page';
+import { DeleteUserModule } from './features/user/pages/delete-user/delete-user.module';
+import { DeleteUserPage } from './features/user/pages/delete-user/delete-user.page';
+import { LoginModule } from './features/auth/pages/login/login.module';
+import { LoginPage } from './features/auth/pages/login/login.page';
+import { UpdateUserModule } from './features/user/pages/update-user/update-user.module';
+import { UpdateUserPage } from './features/user/pages/update-user/update-user.page';
+import { UserListModule } from './features/user/pages/user-list/user-list.module';
+import { UserListPage } from './features/user/pages/user-list/user-list.page';
 
 const routes: Routes = [
   {

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UpdateUserFacade } from 'src/app/store/facades/user/update-user.facade';
 import { UserUpdate } from 'src/app/types/user';
-import { UpdateUserFacade } from '../../store/facades/user/update-user.facade';
 
 @Component({
   selector: 'app-update-user',

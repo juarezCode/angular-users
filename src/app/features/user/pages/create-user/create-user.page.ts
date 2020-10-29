@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CreateUserFacade } from 'src/app/store/facades/user/create-user.facade';
 import { NewUser } from 'src/app/types/user';
-import { CreateUserFacade } from '../../store/facades/user/create-user.facade';
 
 @Component({
   selector: 'app-create-user',

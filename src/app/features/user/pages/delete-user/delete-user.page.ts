@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DeleteUserFacade } from '../../store/facades/user/delete-user.facade';
+import { DeleteUserFacade } from 'src/app/store/facades/user/delete-user.facade';
 
 @Component({
   selector: 'app-delete-user',

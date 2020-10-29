@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { LoginFacade } from 'src/app/store/facades/auth/login.facade';
-import { UserListFacade } from '../../store/facades/user/user-list.facade';
+import { UserListFacade } from 'src/app/store/facades/user/user-list.facade';
 
 @Component({
   selector: 'app-user-list',

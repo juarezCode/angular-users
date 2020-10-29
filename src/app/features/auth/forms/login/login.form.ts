@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserLogin } from 'src/app/types/user';
@@ -12,6 +19,8 @@ import { emailValidator, whitespaceValidator } from 'src/app/util/string-validat
 })
 export class LoginForm {
   @Output() login: EventEmitter<UserLogin> = new EventEmitter();
+
+  @Input() logging: boolean;
 
   form: FormGroup;
 
