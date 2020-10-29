@@ -25,10 +25,6 @@ export class UserTableComponent {
     console.log(`user ${id}`);
   }
 
-  createUser() {
-    this.router.navigate(['/app/create-user']);
-  }
-
   navigateToDelete(id: number) {
     this.router.navigate([`/app/delete-user/${id}`]);
   }

@@ -1,7 +1,7 @@
 export type User = {
   id: number;
   name: string;
-  username: string;
+  username?: string;
   email: string;
 };
 
@@ -37,5 +37,6 @@ export type LoginResponse = {
   status: string;
   data: {
     token: string;
+    userId: number;
   };
 };

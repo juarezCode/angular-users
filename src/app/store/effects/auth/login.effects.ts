@@ -5,6 +5,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthAPI } from 'src/app/api/auth.api';
+import { UserAPI } from 'src/app/api/user.api';
 import { login, loginError, loginSuccess } from '../../actions/auth/login.actions';
 
 @Injectable()
@@ -13,11 +14,15 @@ export class LoginEffects {
     this.actions$.pipe(
       ofType(login),
       switchMap(({ payload }) => {
-        return this.authAPI.login(payload).pipe(
-          map((payload) => loginSuccess({ token: payload })),
-          catchError((error) => of(loginError({ error: error.error }))),
-        );
+        return this.authAPI
+          .login(payload)
+          .pipe(map((payload) => ({ token: payload.token, userId: payload.userId })));
       }),
+      switchMap(({ token, userId }) => {
+        return this.userAPI.getUser(userId).pipe(map((userData) => ({ token, userData })));
+      }),
+      map((response) => loginSuccess(response)),
+      catchError((error) => of(loginError({ error: error.error }))),
     ),
   );
 
@@ -59,6 +64,7 @@ export class LoginEffects {
   constructor(
     private actions$: Actions,
     private authAPI: AuthAPI,
+    private userAPI: UserAPI,
     private router: Router,
     private snackbar: MatSnackBar,
   ) {}

@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { LoginFacade } from 'src/app/store/facades/auth/login.facade';
 import { UserListFacade } from '../../store/facades/user/user-list.facade';
 
 @Component({
@@ -16,10 +19,20 @@ export class UserListPage implements OnInit {
 
   errorUsers$ = this.userFacade.errorUsers$;
 
-  constructor(private userFacade: UserListFacade) {}
+  user$ = this.loginFacade.user$;
+
+  constructor(
+    private userFacade: UserListFacade,
+    private loginFacade: LoginFacade,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.getUsers();
+  }
+
+  createUser() {
+    this.router.navigate(['/app/create-user']);
   }
 
   getUsers() {

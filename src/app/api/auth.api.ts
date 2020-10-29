@@ -13,9 +13,9 @@ export class AuthAPI {
 
   constructor(private http: HttpClient) {}
 
-  login(payload: UserLogin): Observable<string> {
+  login(payload: UserLogin): Observable<{ token: string; userId: number }> {
     return this.http
       .post<LoginResponse>(`${this.url}/users/login`, payload)
-      .pipe(map((response) => response.data.token));
+      .pipe(map((response) => response.data));
   }
 }
