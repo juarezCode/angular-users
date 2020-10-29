@@ -15,12 +15,14 @@ import { UpdateUserModule } from './features/user/pages/update-user/update-user.
 import { UpdateUserPage } from './features/user/pages/update-user/update-user.page';
 import { UserListModule } from './features/user/pages/user-list/user-list.module';
 import { UserListPage } from './features/user/pages/user-list/user-list.page';
+import { ProductListPage } from './features/product/pages/product-list/product-list.page';
+import { ProductListModule } from './features/product/pages/product-list/product-list.module';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login',
+    redirectTo: 'app',
   },
   {
     path: 'login',
@@ -36,7 +38,7 @@ const routes: Routes = [
   {
     path: 'app',
     component: LayoutComponent,
-    canActivate: [SessionGuard],
+    // canActivate: [SessionGuard],
     children: [
       {
         path: '',
@@ -52,15 +54,15 @@ const routes: Routes = [
             component: UserListPage,
           },
           {
-            path: 'create-user',
+            path: 'create',
             component: CreateUserPage,
           },
           {
-            path: 'delete-user/:userId',
+            path: 'delete/:userId',
             component: DeleteUserPage,
           },
           {
-            path: 'update-user/:userId',
+            path: 'update/:userId',
             component: UpdateUserPage,
           },
         ],
@@ -71,18 +73,18 @@ const routes: Routes = [
           {
             path: '',
             pathMatch: 'full',
-            component: UserListPage,
+            component: ProductListPage,
           },
           {
-            path: 'create-user',
+            path: 'create',
             component: CreateUserPage,
           },
           {
-            path: 'delete-user/:userId',
+            path: 'delete/:userId',
             component: DeleteUserPage,
           },
           {
-            path: 'update-user/:userId',
+            path: 'update/:userId',
             component: UpdateUserPage,
           },
         ],
@@ -102,6 +104,7 @@ const routes: Routes = [
     UpdateUserModule,
     LayoutModule,
     AuthenticationLayoutModule,
+    ProductListModule,
   ],
   exports: [RouterModule],
 })

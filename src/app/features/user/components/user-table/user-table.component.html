@@ -32,7 +32,7 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-    <tr (click)="selectUser(user.id)" mat-row *matRowDef="let user; columns: columnas"></tr>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr (click)="selectUser(user.id)" mat-row *matRowDef="let user; columns: columns"></tr>
   </table>
 </div>

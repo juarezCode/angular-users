@@ -17,7 +17,7 @@ export class UserTableComponent {
 
   @Input() error: any;
 
-  columnas: string[] = ['No', 'name', 'email', 'actions'];
+  columns: string[] = ['No', 'name', 'email', 'actions'];
 
   constructor(private router: Router) {}
 
@@ -26,10 +26,10 @@ export class UserTableComponent {
   }
 
   navigateToDelete(id: number) {
-    this.router.navigate([`/app/users/delete-user/${id}`]);
+    this.router.navigate([`/app/users/delete/${id}`]);
   }
 
   navigateToUpdate(id: number) {
-    this.router.navigate([`/app/users/update-user/${id}`]);
+    this.router.navigate([`/app/users/update/${id}`]);
   }
 }

@@ -1,0 +1,45 @@
+<div class="table-container">
+  <div class="shade" *ngIf="loading || error || (loaded && products.length === 0)">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <span class="mat-body-2 text-warn" *ngIf="error"> Hubo un error al cargar la información </span>
+    <span class="mat-body-2" *ngIf="loaded && products.length === 0">
+      No se encontraron resultados
+    </span>
+  </div>
+  <table mat-table [dataSource]="products" class="hover action" style="width: 100%">
+    <ng-container matColumnDef="No">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Precio</th>
+      <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Descripción</th>
+      <td mat-cell *matCellDef="let product">{{ product.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-raised-button color="warn" (click)="navigateToDelete(product.id)">
+          eliminar
+        </button>
+        <button mat-raised-button color="primary" (click)="navigateToUpdate(product.id)">
+          Modificar
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr (click)="selectProduct(product.id)" mat-row *matRowDef="let product; columns: columns"></tr>
+  </table>
+</div>

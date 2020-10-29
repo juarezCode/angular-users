@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <h1 class="mat-title">Bienvenido:</h1>
+        <h1 class="mat-title">Productos</h1>
+        <button mat-raised-button color="accent" (click)="createProduct()">crear producto</button>
+      </div>
+    </div>
+    <product-table
+      [products]="products$ | async"
+      [loading]="loadingProducts$ | async"
+      [loaded]="loadedProducts$ | async"
+      [error]="errorProducts$| async"
+    ></product-table>
+  </mat-card-content>
+</mat-card>
