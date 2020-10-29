@@ -2,6 +2,6 @@
   <mat-progress-bar *ngIf="creatingUser$ | async" mode="indeterminate"></mat-progress-bar>
   <h2 class="mat-title">Crear Usuario</h2>
   <mat-card-content>
-    <create-user (newUser)="createUser($event)"></create-user>
+    <create-user-form (newUser)="createUser($event)"></create-user-form>
   </mat-card-content>
 </mat-card>

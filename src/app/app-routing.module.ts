@@ -17,6 +17,12 @@ import { UserListModule } from './features/user/pages/user-list/user-list.module
 import { UserListPage } from './features/user/pages/user-list/user-list.page';
 import { ProductListPage } from './features/product/pages/product-list/product-list.page';
 import { ProductListModule } from './features/product/pages/product-list/product-list.module';
+import { CreateProductPage } from './features/product/pages/create-product/create-product.page';
+import { CreateProductModule } from './features/product/pages/create-product/create-product.module';
+import { DeleteProductPage } from './features/product/pages/delete-product/delete-product.page';
+import { DeleteProductModule } from './features/product/pages/delete-product/delete-product.module';
+import { UpdateProductPage } from './features/product/pages/update-product/update-product.page';
+import { UpdateProductModule } from './features/product/pages/update-product/update-product.module';
 
 const routes: Routes = [
   {
@@ -77,15 +83,15 @@ const routes: Routes = [
           },
           {
             path: 'create',
-            component: CreateUserPage,
+            component: CreateProductPage,
           },
           {
             path: 'delete/:userId',
-            component: DeleteUserPage,
+            component: DeleteProductPage,
           },
           {
             path: 'update/:userId',
-            component: UpdateUserPage,
+            component: UpdateProductPage,
           },
         ],
       },
@@ -105,6 +111,9 @@ const routes: Routes = [
     LayoutModule,
     AuthenticationLayoutModule,
     ProductListModule,
+    CreateProductModule,
+    DeleteProductModule,
+    UpdateProductModule,
   ],
   exports: [RouterModule],
 })

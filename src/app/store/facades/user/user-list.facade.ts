@@ -4,7 +4,7 @@ import { getUsers } from 'src/app/store/actions/user/users.actions';
 import {
   selectErrorUsers,
   selectLoadingUsers,
-  selectLoadUsers,
+  selectLoadedUsers,
   selectUsers,
 } from 'src/app/store/selectors/user/users.selectors';
 
@@ -16,7 +16,7 @@ export class UserListFacade {
 
   loadingUsers$ = this.store.pipe(select(selectLoadingUsers));
 
-  loadedUsers$ = this.store.pipe(select(selectLoadUsers));
+  loadedUsers$ = this.store.pipe(select(selectLoadedUsers));
 
   errorUsers$ = this.store.pipe(select(selectErrorUsers));
 

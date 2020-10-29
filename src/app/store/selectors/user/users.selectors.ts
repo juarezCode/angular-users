@@ -3,7 +3,7 @@ import { selectUser } from './feature';
 
 const selectUsersReducer = createSelector(selectUser, (state) => state.users);
 
-export const selectLoadUsers = createSelector(selectUsersReducer, (state) => state.cargado);
+export const selectLoadedUsers = createSelector(selectUsersReducer, (state) => state.cargado);
 
 export const selectLoadingUsers = createSelector(selectUsersReducer, (state) => state.cargando);
 

@@ -4,6 +4,12 @@ export type Product = {
   price: number;
 };
 
+export type NewProduct = {
+  name: string;
+  description: string;
+  price: number;
+};
+
 export type Products = {
   data: {
     total: number;

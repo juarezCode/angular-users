@@ -1,0 +1,71 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form" #ngForm="ngForm">
+  <div class="row">
+    <mat-form-field class="col-12">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" matInput [placeholder]="'Nombre'" type="text" />
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'name') || form.hasError('whitespace', 'name')">
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('maxlength', 'name')">
+          No puede tener mas de 80 caracteres.
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+      <mat-label>Descripcion</mat-label>
+      <input
+        matInput
+        formControlName="description"
+        matInput
+        [placeholder]="'Descripcion'"
+        type="text"
+      />
+      <mat-error>
+        <span
+          *ngIf="form.hasError('required', 'description') || form.hasError('whitespace', 'description')"
+        >
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('maxlength', 'description')">
+          No puede tener mas de 80 caracteres.
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+      <mat-label>Precio</mat-label>
+      <input matInput formControlName="price" matInput [placeholder]="'Precio'" type="number" />
+      <span matPrefix>$</span>
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'price') || form.hasError('whitespace', 'price')">
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('maxlength', 'price')">
+          No puede tener mas de 80 caracteres.
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <div class="col-12">
+      <div class="row justify-content-end">
+        <button
+          class="col-auto"
+          style="margin-right: 10px"
+          type="button"
+          mat-button
+          (click)="back()"
+        >
+          Cancelar
+        </button>
+        <button
+          class="col-auto"
+          [disabled]="(ngForm.submitted && form.invalid)"
+          color="accent"
+          type="submit"
+          mat-flat-button
+        >
+          Crear
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

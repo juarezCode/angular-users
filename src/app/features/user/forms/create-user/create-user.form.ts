@@ -6,7 +6,7 @@ import { NewUser } from 'src/app/types/user';
 import { emailValidator, whitespaceValidator } from 'src/app/util/string-validators';
 
 @Component({
-  selector: 'create-user',
+  selector: 'create-user-form',
   templateUrl: './create-user.form.html',
   styleUrls: ['./create-user.form.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
