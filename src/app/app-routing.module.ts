@@ -41,19 +41,51 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: UserListPage,
+        redirectTo: 'products',
       },
       {
-        path: 'create-user',
-        component: CreateUserPage,
+        path: 'users',
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            component: UserListPage,
+          },
+          {
+            path: 'create-user',
+            component: CreateUserPage,
+          },
+          {
+            path: 'delete-user/:userId',
+            component: DeleteUserPage,
+          },
+          {
+            path: 'update-user/:userId',
+            component: UpdateUserPage,
+          },
+        ],
       },
       {
-        path: 'delete-user/:userId',
-        component: DeleteUserPage,
-      },
-      {
-        path: 'update-user/:userId',
-        component: UpdateUserPage,
+        path: 'products',
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            component: UserListPage,
+          },
+          {
+            path: 'create-user',
+            component: CreateUserPage,
+          },
+          {
+            path: 'delete-user/:userId',
+            component: DeleteUserPage,
+          },
+          {
+            path: 'update-user/:userId',
+            component: UpdateUserPage,
+          },
+        ],
       },
     ],
   },

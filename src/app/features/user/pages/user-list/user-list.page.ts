@@ -31,7 +31,7 @@ export class UserListPage implements OnInit {
   }
 
   createUser() {
-    this.router.navigate(['/app/create-user']);
+    this.router.navigate(['/app/users/create-user']);
   }
 
   getUsers() {

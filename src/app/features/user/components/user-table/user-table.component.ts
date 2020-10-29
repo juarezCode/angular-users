@@ -26,10 +26,10 @@ export class UserTableComponent {
   }
 
   navigateToDelete(id: number) {
-    this.router.navigate([`/app/delete-user/${id}`]);
+    this.router.navigate([`/app/users/delete-user/${id}`]);
   }
 
   navigateToUpdate(id: number) {
-    this.router.navigate([`/app/update-user/${id}`]);
+    this.router.navigate([`/app/users/update-user/${id}`]);
   }
 }
