@@ -1,5 +1,5 @@
 <mat-card class="w-50 progress-bar-container">
-  <!-- <mat-progress-bar *ngIf="creatingUser$ | async" mode="indeterminate"></mat-progress-bar> -->
+  <mat-progress-bar *ngIf="creatingProduct$ | async" mode="indeterminate"></mat-progress-bar>
   <h2 class="mat-title">Crear Producto</h2>
   <mat-card-content>
     <create-product-form (createProduct)="createProduct($event)"></create-product-form>

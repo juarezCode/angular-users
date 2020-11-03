@@ -8,6 +8,8 @@ import { NewProduct } from 'src/app/types/product';
   styleUrls: ['./create-product.page.scss'],
 })
 export class CreateProductPage implements OnInit {
+  creatingProduct$ = this.createProductFacade.creatingProduct$;
+
   constructor(private createProductFacade: CreateProductFacade) {}
 
   ngOnInit(): void {}
