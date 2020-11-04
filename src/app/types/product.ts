@@ -10,6 +10,12 @@ export type NewProduct = {
   price: number;
 };
 
+export type ProductUpdate = {
+  name: string;
+  description: string;
+  price: number;
+};
+
 export type Products = {
   data: {
     total: number;

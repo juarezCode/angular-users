@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { NewProduct, Product, ProductResponse, Products } from '../types/product';
+import { NewProduct, Product, ProductResponse, Products, ProductUpdate } from '../types/product';
 
 @Injectable({
   providedIn: 'root',
@@ -31,5 +31,9 @@ export class ProductAPI {
 
   deteleProduct(productId: number): Observable<void> {
     return this.http.delete(`${this.url}/products/delete/${productId}`).pipe(map(() => null));
+  }
+
+  updateProduct(productId: number, paylaod: ProductUpdate): Observable<void> {
+    return this.http.put(`${this.url}/products/update/${productId}`, paylaod).pipe(map(() => null));
   }
 }

@@ -13,13 +13,13 @@ export class DeleteProductPage implements OnInit {
 
   deletingProduct$ = this.deleteProductFacade.deletingProduct$;
 
+  id: number;
+
   constructor(
     private route: ActivatedRoute,
     private deleteProductFacade: DeleteProductFacade,
     private productFacade: ProductFacade,
   ) {}
-
-  id: number;
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('productId');
