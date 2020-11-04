@@ -1,0 +1,11 @@
+<div class="col-12">
+  <h2>Nombre: {{ product?.name }}</h2>
+  <h2>Descripción: {{ product?.description }}</h2>
+  <h2>Precio: {{ product?.price }}</h2>
+  <div class="row justify-content-end">
+    <button class="col-auto" type="button" mat-button (click)="back()">Cancelar</button>
+    <button class="col-auto" color="accent" mat-flat-button (click)="deleteProduct()">
+      Eliminar
+    </button>
+  </div>
+</div>

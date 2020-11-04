@@ -16,3 +16,8 @@ export type Products = {
     products: Product[];
   };
 };
+
+export type ProductResponse = {
+  status: string;
+  data: Product;
+};

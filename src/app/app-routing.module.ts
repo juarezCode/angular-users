@@ -86,11 +86,11 @@ const routes: Routes = [
             component: CreateProductPage,
           },
           {
-            path: 'delete/:userId',
+            path: 'delete/:productId',
             component: DeleteProductPage,
           },
           {
-            path: 'update/:userId',
+            path: 'update/:productId',
             component: UpdateProductPage,
           },
         ],

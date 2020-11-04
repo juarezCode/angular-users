@@ -1,1 +1,10 @@
-<p>delete-product works!</p>
+<mat-card class="w-50 progress-bar-container">
+  <mat-progress-bar *ngIf="deletingProduct$ | async" mode="indeterminate"></mat-progress-bar>
+  <h2 class="mat-title">Eliminar Usuario</h2>
+  <mat-card-content>
+    <delete-product-component
+      (deleteProduct)="deleteProduct()"
+      [product]="product$ | async"
+    ></delete-product-component>
+  </mat-card-content>
+</mat-card>
