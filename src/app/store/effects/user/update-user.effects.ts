@@ -33,7 +33,7 @@ export class UpdateUserEffects {
           this.snackbar.open('Se ha actualizado el usuario exitosamente', null, {
             panelClass: 'primary',
           });
-          this.router.navigate(['/app']);
+          this.router.navigate(['/app/users']);
         }),
       ),
     { dispatch: false },

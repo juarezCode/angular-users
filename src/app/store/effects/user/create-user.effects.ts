@@ -33,7 +33,7 @@ export class CreateUserEffects {
           this.snackbar.open('Se ha creado el usuario exitosamente', null, {
             panelClass: 'primary',
           });
-          this.router.navigate(['/app']);
+          this.router.navigate(['/app/users']);
         }),
       ),
     { dispatch: false },

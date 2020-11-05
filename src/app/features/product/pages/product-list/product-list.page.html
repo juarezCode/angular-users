@@ -2,9 +2,12 @@
   <mat-card-content>
     <div class="row">
       <div class="col">
-        <h1 class="mat-title">Bienvenido:</h1>
+        <h1 class="mat-title">Bienvenido: {{(user$ | async)?.name}}</h1>
         <h1 class="mat-title">Productos</h1>
         <button mat-raised-button color="accent" (click)="createProduct()">crear producto</button>
+        <button mat-raised-button color="primary" (click)="adminUsers()">
+          Administrar usuarios
+        </button>
       </div>
     </div>
     <product-table

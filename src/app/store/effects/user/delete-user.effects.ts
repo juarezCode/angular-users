@@ -33,7 +33,7 @@ export class DeleteUserEffects {
           this.snackbar.open('Se ha eliminado el usuario exitosamente', null, {
             panelClass: 'primary',
           });
-          this.router.navigate(['/app']);
+          this.router.navigate(['/app/users']);
         }),
       ),
     { dispatch: false },

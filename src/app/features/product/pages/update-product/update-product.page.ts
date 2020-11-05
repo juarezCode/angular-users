@@ -12,6 +12,8 @@ import { ProductUpdate } from 'src/app/types/product';
 export class UpdateProductPage implements OnInit {
   product$ = this.productFacade.product$;
 
+  updating$ = this.updateProductFacade.updatingProduct$;
+
   id: number;
 
   constructor(

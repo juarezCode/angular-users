@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginFacade } from 'src/app/store/facades/auth/login.facade';
 import { ProductsFacade } from 'src/app/store/facades/product/products.facade';
 
 @Component({
@@ -17,7 +18,13 @@ export class ProductListPage implements OnInit {
 
   errorProducts$ = this.productsFacade.errorProducts$;
 
-  constructor(private router: Router, private productsFacade: ProductsFacade) {}
+  user$ = this.loginFacade.user$;
+
+  constructor(
+    private router: Router,
+    private productsFacade: ProductsFacade,
+    private loginFacade: LoginFacade,
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -29,5 +36,9 @@ export class ProductListPage implements OnInit {
 
   getProducts() {
     this.productsFacade.getProducts();
+  }
+
+  adminUsers() {
+    this.router.navigate(['/app/users']);
   }
 }
