@@ -20,7 +20,10 @@ export class CreateUserForm {
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.maxLength(80), whitespaceValidator]],
       name: ['', [Validators.required, Validators.maxLength(80), whitespaceValidator]],
+      lastName: ['', [Validators.required, Validators.maxLength(80), whitespaceValidator]],
+      age: ['', [Validators.required, Validators.maxLength(80), Validators.max(150)]],
       email: [
         '',
         [Validators.required, Validators.maxLength(80), whitespaceValidator, emailValidator],

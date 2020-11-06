@@ -17,7 +17,7 @@ export class UserTableComponent {
 
   @Input() error: any;
 
-  columns: string[] = ['No', 'name', 'email', 'actions'];
+  columns: string[] = ['No', 'username', 'name', 'firstName', 'age', 'email', 'actions'];
 
   constructor(private router: Router) {}
 

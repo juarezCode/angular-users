@@ -25,16 +25,8 @@ export class LoginEffects {
 
         return this.userAPI.getUser(userId).pipe(map((userData) => ({ token, userData })));
       }),
-      map((response) => {
-        console.log('success', response);
-
-        return loginSuccess(response);
-      }),
-      catchError((error) => {
-        console.log('error', error);
-
-        return of(loginError({ error: error.error }));
-      }),
+      map((response) => loginSuccess(response)),
+      catchError((error) => of(loginError({ error: error.error }))),
     ),
   );
 

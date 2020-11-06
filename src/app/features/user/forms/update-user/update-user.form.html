@@ -1,6 +1,27 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="form" #ngForm="ngForm">
   <div class="row">
     <mat-form-field class="col-12">
+      <mat-label>Username</mat-label>
+      <input
+        [value]="user?.username"
+        matInput
+        formControlName="username"
+        matInput
+        [placeholder]="'Username'"
+        type="text"
+      />
+      <mat-error>
+        <span
+          *ngIf="form.hasError('required', 'username') || form.hasError('whitespace', 'username')"
+        >
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('maxlength', 'username')">
+          No puede tener mas de 80 caracteres.
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12">
       <mat-label>Nombre</mat-label>
       <input
         [value]="user?.name"
@@ -19,23 +40,42 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="col-12">
-      <mat-label>Email</mat-label>
+      <mat-label>Apellidos</mat-label>
       <input
-        [value]="user?.email"
+        [value]="user?.lastName"
         matInput
-        formControlName="email"
-        [placeholder]="'Email'"
+        formControlName="lastName"
+        matInput
+        [placeholder]="'Apellidos'"
         type="text"
       />
       <mat-error>
-        <span *ngIf="form.hasError('required', 'email') || form.hasError('whitespace', 'email')">
+        <span
+          *ngIf="form.hasError('required', 'lastName') || form.hasError('whitespace', 'lastName')"
+        >
           Este campo es requerido.
         </span>
-        <span *ngIf="form.hasError('maxlength', 'email')">
+        <span *ngIf="form.hasError('maxlength', 'lastName')">
           No puede tener mas de 80 caracteres.
         </span>
-        <span *ngIf="form.hasError('emailValid', 'email')">
-          Proporcione un correo electronico válido.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+      <mat-label>Edad</mat-label>
+      <input
+        [value]="user?.age"
+        matInput
+        formControlName="age"
+        matInput
+        [placeholder]="'edad'"
+        type="number"
+      />
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'age') || form.hasError('whitespace', 'age')">
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('maxlength', 'age')">
+          No puede tener mas de 80 caracteres.
         </span>
       </mat-error>
     </mat-form-field>

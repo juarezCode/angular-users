@@ -1,19 +1,26 @@
 export type User = {
-  id: number;
+  id?: number;
   name: string;
-  username?: string;
+  lastName: string;
+  age: number;
+  username: string;
   email: string;
 };
 
 export type NewUser = {
   name: string;
+  lastName: string;
+  age: number;
+  username?: string;
   email: string;
   password: string;
 };
 
 export type UserUpdate = {
+  username: string;
   name: string;
-  email: string;
+  lastName: string;
+  age: number;
 };
 
 export type Users = {

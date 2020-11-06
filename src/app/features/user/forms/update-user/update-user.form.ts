@@ -21,11 +21,10 @@ export class UpdateUserForm {
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.maxLength(80), whitespaceValidator]],
       name: ['', [Validators.required, Validators.maxLength(80), whitespaceValidator]],
-      email: [
-        '',
-        [Validators.required, Validators.maxLength(80), whitespaceValidator, emailValidator],
-      ],
+      lastName: ['', [Validators.required, Validators.maxLength(80), whitespaceValidator]],
+      age: ['', [Validators.required, Validators.maxLength(80), Validators.max(150)]],
     });
   }
 
