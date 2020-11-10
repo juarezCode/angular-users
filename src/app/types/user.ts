@@ -5,6 +5,7 @@ export type User = {
   age: number;
   username: string;
   email: string;
+  password?: string;
 };
 
 export type NewUser = {
@@ -31,7 +32,7 @@ export type Users = {
 };
 
 export type UserLogin = {
-  name: string;
+  password: string;
   email: string;
 };
 

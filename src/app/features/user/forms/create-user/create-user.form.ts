@@ -42,6 +42,6 @@ export class CreateUserForm {
   }
 
   back() {
-    this.router.navigate(['/app']);
+    this.router.navigate(['/app/users']);
   }
 }

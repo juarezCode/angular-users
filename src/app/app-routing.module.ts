@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'app',
+    redirectTo: 'login',
   },
   {
     path: 'login',
@@ -44,12 +44,12 @@ const routes: Routes = [
   {
     path: 'app',
     component: LayoutComponent,
-    // canActivate: [SessionGuard],
+    canActivate: [SessionGuard],
     children: [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'users',
+        redirectTo: 'products',
       },
       {
         path: 'users',

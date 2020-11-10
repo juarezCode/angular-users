@@ -38,6 +38,6 @@ export class UpdateUserForm {
   }
 
   back() {
-    this.router.navigate(['/app']);
+    this.router.navigate(['/app/users']);
   }
 }

@@ -15,7 +15,9 @@ export class AuthAPI {
 
   login(payload: UserLogin): Observable<{ token: string; userId: number }> {
     return this.http
-      .post<LoginResponse>(`${this.url}/users/login`, payload)
+      .post<LoginResponse>(`${this.url}/users/login`, payload, {
+        headers: { 'No-token': 'true' },
+      })
       .pipe(map((response) => response.data));
   }
 }
