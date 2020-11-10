@@ -2,10 +2,10 @@
   <mat-card-content>
     <div class="row">
       <div class="col">
-        <h1 class="mat-title">Bienvenido: {{(user$ | async)?.name}}</h1>
+        <h1 class="mat-title">Bienvenido: {{(userFullName$ | async)}}</h1>
         <h1 class="mat-title">Productos</h1>
         <button mat-raised-button color="accent" (click)="createProduct()">crear producto</button>
-        <button mat-raised-button color="primary" (click)="adminUsers()">
+        <button mat-raised-button color="primary" (click)="adminUsers()" *ngIf="isAdmin$ | async">
           Administrar usuarios
         </button>
       </div>
@@ -14,7 +14,8 @@
       [products]="products$ | async"
       [loading]="loadingProducts$ | async"
       [loaded]="loadedProducts$ | async"
-      [error]="errorProducts$| async"
+      [error]="errorProducts$ | async"
+      [isAdmin]="isAdmin$ | async"
     ></product-table>
   </mat-card-content>
 </mat-card>

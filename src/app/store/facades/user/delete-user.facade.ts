@@ -9,8 +9,6 @@ import { selectUserData } from 'src/app/store/selectors/user/user.selectors';
   providedIn: 'root',
 })
 export class DeleteUserFacade {
-  user$ = this.store.pipe(select(selectUserData));
-
   deleting$ = this.store.pipe(select(selectDeletingUser));
 
   constructor(private store: Store) {}

@@ -4,3 +4,5 @@ import { selectAuth } from './feature';
 const selectUserDataReducer = createSelector(selectAuth, (state) => state.user);
 
 export const selectAuthUser = createSelector(selectUserDataReducer, (state) => state);
+
+export const selectAuthUserRole = createSelector(selectAuthUser, (state) => state.role);

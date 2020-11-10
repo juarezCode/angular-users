@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DeleteUserFacade } from 'src/app/store/facades/user/delete-user.facade';
+import { UserFacade } from 'src/app/store/facades/user/user.facade';
 
 @Component({
   selector: 'app-delete-user',
@@ -8,11 +9,11 @@ import { DeleteUserFacade } from 'src/app/store/facades/user/delete-user.facade'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteUserPage {
-  user$ = this.deleteUserFacade.user$;
-
   deleting$ = this.deleteUserFacade.deleting$;
 
-  constructor(private deleteUserFacade: DeleteUserFacade) {}
+  user$ = this.userFacade.user$;
+
+  constructor(private deleteUserFacade: DeleteUserFacade, private userFacade: UserFacade) {}
 
   getUser(userId: number) {
     this.deleteUserFacade.getUser(userId);

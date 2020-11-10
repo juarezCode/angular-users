@@ -30,7 +30,12 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let product">
-        <button mat-raised-button color="warn" (click)="navigateToDelete(product.id)">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="navigateToDelete(product.id)"
+          *ngIf="isAdmin"
+        >
           eliminar
         </button>
         <button mat-raised-button color="primary" (click)="navigateToUpdate(product.id)">

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginFacade } from 'src/app/store/facades/auth/login.facade';
+import { UserAuthFacade } from 'src/app/store/facades/auth/user.auth.facade';
 import { UserListFacade } from 'src/app/store/facades/user/user-list.facade';
 
 @Component({
@@ -10,20 +10,20 @@ import { UserListFacade } from 'src/app/store/facades/user/user-list.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserListPage implements OnInit {
-  users$ = this.userFacade.users$;
+  users$ = this.usersFacade.users$;
 
-  loadingUsers$ = this.userFacade.loadingUsers$;
+  loadingUsers$ = this.usersFacade.loadingUsers$;
 
-  loadedUsers$ = this.userFacade.loadedUsers$;
+  loadedUsers$ = this.usersFacade.loadedUsers$;
 
-  errorUsers$ = this.userFacade.errorUsers$;
+  errorUsers$ = this.usersFacade.errorUsers$;
 
-  user$ = this.loginFacade.user$;
+  userFullName$ = this.userAuthFacade.userFullName$;
 
   constructor(
-    private userFacade: UserListFacade,
-    private loginFacade: LoginFacade,
+    private usersFacade: UserListFacade,
     private router: Router,
+    private userAuthFacade: UserAuthFacade,
   ) {}
 
   ngOnInit() {
@@ -35,6 +35,6 @@ export class UserListPage implements OnInit {
   }
 
   getUsers() {
-    this.userFacade.getUsers();
+    this.usersFacade.getUsers();
   }
 }

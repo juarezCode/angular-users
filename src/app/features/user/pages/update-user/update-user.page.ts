@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UpdateUserFacade } from 'src/app/store/facades/user/update-user.facade';
+import { UserFacade } from 'src/app/store/facades/user/user.facade';
 import { UserUpdate } from 'src/app/types/user';
 
 @Component({
@@ -12,11 +13,15 @@ import { UserUpdate } from 'src/app/types/user';
 export class UpdateUserPage implements OnInit {
   updating$ = this.updateUserFacade.updating$;
 
-  user$ = this.updateUserFacade.user$;
+  user$ = this.userFacade.user$;
 
   id: number;
 
-  constructor(private updateUserFacade: UpdateUserFacade, private route: ActivatedRoute) {}
+  constructor(
+    private updateUserFacade: UpdateUserFacade,
+    private userFacade: UserFacade,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('userId');

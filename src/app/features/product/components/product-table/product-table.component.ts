@@ -17,6 +17,8 @@ export class ProductTableComponent {
 
   @Input() error: any;
 
+  @Input() isAdmin: boolean;
+
   columns: string[] = ['No', 'name', 'price', 'description', 'actions'];
 
   constructor(private router: Router) {}

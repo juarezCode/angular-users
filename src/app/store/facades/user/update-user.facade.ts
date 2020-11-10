@@ -12,8 +12,6 @@ import { UserUpdate } from 'src/app/types/user';
 export class UpdateUserFacade {
   updating$ = this.store.pipe(select(selectUpdatingUser));
 
-  user$ = this.store.pipe(select(selectUserData));
-
   constructor(private store: Store) {}
 
   updateUser(user: UserUpdate, userId: number) {
